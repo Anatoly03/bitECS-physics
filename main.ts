@@ -28,10 +28,13 @@ function createBodies() {
     const ball = addEntity(world)
     addComponent(world, Components.Pos, ball)
     addComponent(world, Components.Circle, ball)
+    addComponent(world, Components.Vel, ball)
 
     Components.Pos.x[ball] = canvas.width * .5
     Components.Pos.y[ball] = 300
     Components.Circle.r[ball] = 50
+    Components.Vel.x[ball] = -0.1
+    Components.Vel.y[ball] = 0
 }
 
 function update() {
