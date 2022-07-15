@@ -1,5 +1,11 @@
 import { defineQuery, IWorld, pipe } from 'bitecs'
-import { Pos, Vel } from './comps'
+import { Acc, Pos, Vel } from './comps'
+
+/**
+ * s'(t) = v(t)
+ * 
+ * Position is updated relative to the velocity.
+ */
 
 const pos_inc_query = defineQuery([Pos, Vel])
 function incrementPosition(world: IWorld) {
@@ -14,6 +20,26 @@ function incrementPosition(world: IWorld) {
     return world
 }
 
+/**
+ * v'(t) = a(t)
+ * 
+ * Velocity is updated relative to the acceleration.
+ */
+
+const vel_inc_query = defineQuery([Vel, Acc])
+function incrementVelocity(world: IWorld) {
+    const entities = vel_inc_query(world)
+
+    for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        Vel.x[eid] += Acc.x[eid]
+        Vel.y[eid] += Acc.y[eid]
+    }
+
+    return world
+}
+
 export const update = pipe(
-    incrementPosition
+    incrementPosition,
+    incrementVelocity
 )
