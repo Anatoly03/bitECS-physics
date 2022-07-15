@@ -39,6 +39,10 @@ function incrementVelocity(world: IWorld) {
     return world
 }
 
+/**
+ * @exports
+ */
+
 export const update = pipe(
     incrementPosition,
     incrementVelocity
