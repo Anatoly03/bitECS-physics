@@ -68,9 +68,11 @@ function set_background(color: string) {
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
 
+const position_query = defineQuery([Components.Pos])
 const rectangles_query = defineQuery([Components.Pos, Components.Rectangle])
 const circles_query = defineQuery([Components.Pos, Components.Circle])
 function render_objects() {
+    const entities = position_query(world)
     const rectangles = rectangles_query(world)
     const circles = circles_query(world)
 
@@ -107,6 +109,17 @@ function render_objects() {
 
         ctx.rotate(-Components.Rotation.angle[eid])
         ctx.translate(-x, -y)
+    }
+
+    for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        const x = Components.Pos.x[eid]
+        const y = Components.Pos.y[eid]
+
+        ctx.fillStyle = 'red'
+        ctx.beginPath()
+        ctx.ellipse(x, y, 2, 2, Math.PI / 4, 0, 2 * Math.PI)
+        ctx.fill()
     }
 }
 
