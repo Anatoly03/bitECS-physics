@@ -85,6 +85,10 @@ function render_centers(world: IWorld) {
     return world
 }
 
+/**
+ * FPS / PIPE
+ */
+
 function calc_fps() {
     let delta = (Date.now() - lastCalledTime) / 1000
     lastCalledTime = Date.now()
