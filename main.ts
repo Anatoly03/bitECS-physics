@@ -22,6 +22,7 @@ function init() {
 
 function createBodies() {
     const floor = addEntity(world)
+    addComponent(world, Components.Body, floor)
     addComponent(world, Components.Pos, floor)
     addComponent(world, Components.Rectangle, floor)
 
@@ -31,16 +32,28 @@ function createBodies() {
     Components.Rectangle.h[floor] = 50
 
     const ball = addEntity(world)
+    addComponent(world, Components.Body, ball)
     addComponent(world, Components.Pos, ball)
     addComponent(world, Components.Circle, ball)
     addComponent(world, Components.Vel, ball)
     addComponent(world, Components.Acc, ball)
 
-    Components.Pos.x[ball] = canvas.width * .5
+    Components.Pos.x[ball] = canvas.width * .5 - 300
     Components.Pos.y[ball] = 300
     Components.Circle.r[ball] = 50
-    Components.Vel.x[ball] = -0.1
-    Components.Acc.y[ball] = 0.0001
+    Components.Acc.x[ball] = 0.005
+
+    const ball2 = addEntity(world)
+    addComponent(world, Components.Body, ball2)
+    addComponent(world, Components.Pos, ball2)
+    addComponent(world, Components.Circle, ball2)
+    addComponent(world, Components.Vel, ball2)
+    addComponent(world, Components.Acc, ball2)
+
+    Components.Pos.x[ball2] = canvas.width * .5 + 300
+    Components.Pos.y[ball2] = 300
+    Components.Circle.r[ball2] = 50
+    Components.Acc.x[ball2] = -0.005
 }
 
 window.onload = () => {
