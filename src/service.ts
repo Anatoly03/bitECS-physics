@@ -1,4 +1,4 @@
-import { defineQuery, IWorld, pipe } from 'bitecs'
+import { createWorld, defineQuery, IWorld, pipe } from 'bitecs'
 import { Acc, Pos, Vel } from './comps'
 
 /**
@@ -47,3 +47,9 @@ export const update = pipe(
     incrementPosition,
     incrementVelocity
 )
+
+export function createEngine(world?: IWorld): IWorld {
+    if (world == null) return createEngine(createWorld())
+    setInterval(() => update(world), 16)
+    return world
+}
