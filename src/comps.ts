@@ -6,7 +6,6 @@ import { defineComponent, Types } from 'bitecs'
 //
 //
 
-
 export const Pos = defineComponent({
     x: Types.f64,
     y: Types.f64
@@ -43,3 +42,18 @@ export const Circle = defineComponent({
     r: Types.f64,
 })
 
+//
+//
+// TODO
+//
+//
+
+export const Constraint = defineComponent({
+    // TODO: add constraint type
+})
+
+export const Collision = defineComponent({
+    // TODO, IMPROVE: COLLISION BETWEEN TWO ENTITIES?
+    eid: Types.f64,
+    cid: Types.f64
+})
