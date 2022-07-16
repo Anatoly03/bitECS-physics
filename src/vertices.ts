@@ -82,7 +82,6 @@ export function centre(vertices: Vertices) {
 
 /**
  * @rewrite Matter.js/geometry/Vertices.js, line 112
- * @description Returns the centroid of a body
  */
 export function mean() {
     // TODO
@@ -92,7 +91,7 @@ export function mean() {
  * @rewrite Matter.js/geometry/Vertices.js, line 130
  * @description area of body
  */
-export function area(vertices : Vertices, signed : boolean) : number {
+export function area(vertices: Vertices, signed: boolean): number {
     var area = 0,
         j = vertices.length - 1;
 
@@ -105,6 +104,69 @@ export function area(vertices : Vertices, signed : boolean) : number {
         return area / 2;
 
     return Math.abs(area) / 2;
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 152
+ */
+export function inertia() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 178
+ */
+export function translate() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 194
+ */
+export function rotate() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 233
+ */
+export function contains() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 262
+ */
+export function scale() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 291
+ */
+export function chamfer() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 361
+ */
+export function clockwiseSort() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 377
+ */
+export function isConvex() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 377
+ */
+export function hull() {
+    // TODO
 }
 
 /**
