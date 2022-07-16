@@ -31,14 +31,14 @@ export const Rotation = defineComponent({
 //
 //
 
-export const Edge = defineComponent({
+export const Vertex = defineComponent({
     x: Types.f64,
     y: Types.f64,
-    next: Types.i32, // next edge
+    next: Types.i32, // next edge, -1 for null
 })
 
 export const Body = defineComponent({
-    edge: Types.i32, // first edge
+    vertices: Types.i32, // first edge
 })
 
 export const Rectangle = defineComponent({

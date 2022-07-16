@@ -1,3 +1,6 @@
+
+
+
 /**
 * The `Matter.Body` module contains methods for creating and manipulating body models.
 * A `Matter.Body` is a rigid body that can be simulated by a `Matter.Engine`.
@@ -200,6 +203,9 @@ var Axes = require('../geometry/Axes');
 
             value = settings[property];
             switch (property) {
+
+
+                
 
             case 'isStatic':
                 Body.setStatic(body, value);

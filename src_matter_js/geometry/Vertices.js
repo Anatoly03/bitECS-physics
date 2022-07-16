@@ -1,3 +1,10 @@
+/** 
+ * ANALYZE
+ * 
+ * - We can use a `Vertex` component and create an entity for every vertex.
+ * - Bodies will store information of the first vertex
+ */
+
 /**
 * The `Matter.Vertices` module contains methods for creating and manipulating sets of vertices.
 * A set of vertices is an array of `Matter.Vector` with additional indexing properties inserted by `Vertices.create`.
