@@ -1,15 +1,15 @@
 import { addComponent, addEntity, defineQuery, IWorld, pipe } from 'bitecs'
-import { Body, Circle, Pos, Vel, Collision } from './comps'
+import { Body, Pos, Vel, Collision } from './comps'
 
 const pos_vel_query = defineQuery([Pos, Vel])
-const body_query = defineQuery([Body, Circle, Pos])
+const body_query = defineQuery([Body, Pos])
 
 /**
  * Collision is detected movable objects and all objects.
  */
 
 export function detectCollision(world: IWorld) {
-    const entities = pos_vel_query(world)
+    /*const entities = pos_vel_query(world)
     const bodies = body_query(world)
 
     for (let i = 0; i < entities.length; i++) {
@@ -37,7 +37,7 @@ export function detectCollision(world: IWorld) {
                 console.log('contact')
             }
         }
-    }
+    }*/
 
     return world
 }

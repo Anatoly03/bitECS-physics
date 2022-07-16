@@ -39,15 +39,6 @@ export const Body = defineComponent({
     vertices: Types.i32, // first edge
 })
 
-export const Rectangle = defineComponent({
-    w: Types.f64,
-    h: Types.f64
-})
-
-export const Circle = defineComponent({
-    r: Types.f64,
-})
-
 //
 //
 // TODO

@@ -1,98 +1,11 @@
 import { defineQuery, IWorld, pipe } from 'bitecs'
 import { updateYield } from 'typescript'
-import { Acc, Pos, Vel, Rotation, Rectangle, Circle, Vertex, Body } from './comps'
+import { Acc, Pos, Vel, Rotation, Vertex, Body } from './comps'
 
 let lastCalledTime = Date.now()
 let fps = 0
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D
-
-/**
- * Render Rectangles
- */
-
-const rectangles_query = defineQuery([Pos, Rectangle])
-function render_rectangles(world: IWorld) {
-    const rectangles = rectangles_query(world)
-
-    for (let i = 0; i < rectangles.length; i++) {
-        const eid = rectangles[i]
-        const x = Pos.x[eid]
-        const y = Pos.y[eid]
-        const w = Rectangle.w[eid]
-        const h = Rectangle.h[eid]
-
-        ctx.translate(x, y)
-        ctx.rotate(Rotation.angle[eid])
-
-        ctx.strokeStyle = 'white'
-        ctx.strokeRect(- w * .5, - h * .5, w, h)
-
-        ctx.rotate(-Rotation.angle[eid])
-        ctx.translate(-x, -y)
-    }
-
-    return world
-}
-
-/**
- * Render Circles
- */
-
-const circles_query = defineQuery([Pos, Circle])
-function render_circles(world: IWorld) {
-    const circles = circles_query(world)
-
-    for (let i = 0; i < circles.length; i++) {
-        const eid = circles[i]
-        const x = Pos.x[eid]
-        const y = Pos.y[eid]
-        const r = Circle.r[eid]
-
-        ctx.translate(x, y)
-        ctx.rotate(Rotation.angle[eid])
-
-        ctx.strokeStyle = 'white'
-
-        // Radius
-        ctx.beginPath()
-        ctx.moveTo(r, 0)
-        ctx.lineTo(0, 0)
-        ctx.stroke()
-
-        // Circle
-        ctx.beginPath()
-        ctx.ellipse(0, 0, r, r, Math.PI / 4, 0, 2 * Math.PI)
-        ctx.stroke()
-
-        ctx.rotate(-Rotation.angle[eid])
-        ctx.translate(-x, -y)
-    }
-
-    return world
-}
-
-/**
- * Render Center Dots of Entities
- */
-
-const position_query = defineQuery([Pos])
-function render_centers(world: IWorld) {
-    const entities = position_query(world)
-
-    for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
-        const x = Pos.x[eid]
-        const y = Pos.y[eid]
-
-        ctx.fillStyle = 'red'
-        ctx.beginPath()
-        ctx.ellipse(x, y, 2, 2, Math.PI / 4, 0, 2 * Math.PI)
-        ctx.fill()
-    }
-
-    return world
-}
 
 /**
  * Render Center Dots of Entities
@@ -148,9 +61,6 @@ function display_fps() {
 }
 
 const render__pipe = pipe(
-    render_rectangles,
-    render_circles,
-    render_centers,
     render_bodies,
 )
 

@@ -1,4 +1,4 @@
-import { createEngine, Components, createRender, addRectangle, addPolygon } from './src/index'
+import { createEngine, Components, createRender, addRectangle, addPolygon, addCircle } from './src/index'
 import { createWorld, addEntity, addComponent, defineQuery } from 'bitecs'
 
 let canvas = <HTMLCanvasElement>document.getElementById('canvas')
@@ -21,40 +21,25 @@ function init() {
 }
 
 function createBodies() {
-    const _floor = addRectangle(world, canvas.width * .5, 400, canvas.width - 200, 50)
-
-    const floor = addEntity(world)
-    addComponent(world, Components.Body, floor)
-    addComponent(world, Components.Pos, floor)
-    addComponent(world, Components.Rectangle, floor)
-
-    Components.Pos.x[floor] = canvas.width * .5
-    Components.Pos.y[floor] = 500
-    Components.Rectangle.w[floor] = canvas.width - 200
-    Components.Rectangle.h[floor] = 50
-
-    const ball = addEntity(world)
-    addComponent(world, Components.Body, ball)
+    const floor = addRectangle(world, 100, 400, canvas.width - 200, 50)
+    const ball = addCircle(world, 300, 200, 50)
+    const ball2 = addCircle(world, 300, 200, 50)
+    
     addComponent(world, Components.Pos, ball)
-    addComponent(world, Components.Circle, ball)
     addComponent(world, Components.Vel, ball)
     addComponent(world, Components.Acc, ball)
 
     Components.Pos.x[ball] = canvas.width * .5 - 300
     Components.Pos.y[ball] = 300
-    Components.Circle.r[ball] = 50
     Components.Acc.x[ball] = 0.005
 
-    const ball2 = addEntity(world)
     addComponent(world, Components.Body, ball2)
     addComponent(world, Components.Pos, ball2)
-    addComponent(world, Components.Circle, ball2)
     addComponent(world, Components.Vel, ball2)
     addComponent(world, Components.Acc, ball2)
 
     Components.Pos.x[ball2] = canvas.width * .5 + 300
-    Components.Pos.y[ball2] = 350
-    Components.Circle.r[ball2] = 50
+    Components.Pos.y[ball2] = 250
     Components.Acc.x[ball2] = -0.005
 }
 

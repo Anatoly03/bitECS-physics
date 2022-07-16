@@ -1,5 +1,5 @@
 import { createWorld, defineQuery, IWorld, pipe } from 'bitecs'
-import { Acc, Body, Circle, Pos, Vel } from './comps'
+import { Acc, Pos, Vel } from './comps'
 import { detectCollision } from './collision'
 
 const pos_vel_query = defineQuery([Pos, Vel])
