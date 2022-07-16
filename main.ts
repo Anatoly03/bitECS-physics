@@ -25,7 +25,6 @@ function createBodies() {
     const ball = addCircle(world, 300, 200, 50)
     const ball2 = addCircle(world, 300, 200, 50)
     
-    addComponent(world, Components.Pos, ball)
     addComponent(world, Components.Vel, ball)
     addComponent(world, Components.Acc, ball)
 
@@ -33,8 +32,6 @@ function createBodies() {
     Components.Pos.y[ball] = 300
     Components.Acc.x[ball] = 0.005
 
-    addComponent(world, Components.Body, ball2)
-    addComponent(world, Components.Pos, ball2)
     addComponent(world, Components.Vel, ball2)
     addComponent(world, Components.Acc, ball2)
 
