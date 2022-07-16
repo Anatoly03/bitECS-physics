@@ -15,50 +15,35 @@ N/A
 
 # Documentation
 
+(Table of Contents goes here)
+
 ## Bodies
 
 A body is an entity which physically partakes with the engine.
 
-### `Components.Body`
-
-### `Components.Pos`
+### Component `Pos`
 
 - x `f64` - _x position_
 - y `f64` - _y position_
 
-A component declaring an objects center.
+A component declaring an objects position
 
-### `Components.Vel`
+### Component `Vel`
 
 - x `f64` - _x velocity_
 - y `f64` - _y velocity_
 
 A component declaring an objects velocity. Objects without the Velocity component are static. To move, objects also require the Position component
 
-### `Components.Acc`
+### Component `Acc`
 
 - x `f64` - _x acceleration_
 - y `f64` - _y acceleration_
 
 A component declaring an objects acceleration. To change speed, objects also require the Velocity component.
 
-### `Components.Rotation`
+### Component `Rotation`
 
 - angle `f64` - _rotation of the body along its' center_
 
 A component declaring an objects rotation. Objects will rotate along their center point.
-
-## Body Types
-
-### `Components.Rectangle`
-
-- w `f64` - _width_
-- h `f64` - _height_
-
-A component declaring the entity the behavior of a rectangle. The Position component defines the center of the rectangle.
-
-### `Components.Circle`
-
-- r `f64` - _radius_
-
-A component declaring the entity the behavior of a circle. The Position component defines the center of the circle.
