@@ -41,16 +41,23 @@ export const Body = defineComponent({
 
 //
 //
+// COLLISION
+//
+//
+
+
+export const Collision = defineComponent({
+    // TODO, IMPROVE: COLLISION BETWEEN TWO ENTITIES?
+    bodyA: Types.f64,
+    bodyB: Types.f64
+})
+
+//
+//
 // TODO
 //
 //
 
 export const Constraint = defineComponent({
     // TODO: add constraint type
-})
-
-export const Collision = defineComponent({
-    // TODO, IMPROVE: COLLISION BETWEEN TWO ENTITIES?
-    eid: Types.f64,
-    cid: Types.f64
 })
