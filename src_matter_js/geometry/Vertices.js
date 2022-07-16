@@ -223,14 +223,14 @@ var Common = require('../core/Common');
         return vertices;
     };
 
-    /**
+    /*
      * Returns `true` if the `point` is inside the set of `vertices`.
      * @method contains
      * @param {vertices} vertices
      * @param {vector} point
      * @return {boolean} True if the vertices contains point, otherwise false
      */
-    Vertices.contains = function(vertices, point) {
+    /*Vertices.contains = function(vertices, point) {
         var pointX = point.x,
             pointY = point.y,
             verticesLength = vertices.length,
@@ -249,7 +249,7 @@ var Common = require('../core/Common');
         }
 
         return true;
-    };
+    };*/
 
     /**
      * Scales the vertices from a point (default is centre) in-place.

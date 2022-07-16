@@ -129,9 +129,27 @@ export function rotate() {
 
 /**
  * @rewrite Matter.js/geometry/Vertices.js, line 233
+ * @description Returns true if the point is within the polygon
  */
-export function contains() {
-    // TODO
+export function contains(vertices: Vertices, point: {x: number, y: number}): boolean {
+    var pointX = point.x,
+        pointY = point.y,
+        verticesLength = vertices.length,
+        vertex = vertices[verticesLength - 1],
+        nextVertex;
+
+    for (var i = 0; i < verticesLength; i++) {
+        nextVertex = vertices[i];
+
+        if ((pointX - vertex.x) * (nextVertex.y - vertex.y)
+            + (pointY - vertex.y) * (vertex.x - nextVertex.x) > 0) {
+            return false
+        }
+
+        vertex = nextVertex;
+    }
+
+    return true
 }
 
 /**
