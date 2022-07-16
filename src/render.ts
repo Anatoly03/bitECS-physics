@@ -52,6 +52,14 @@ function render_circles(world: IWorld) {
         ctx.rotate(Rotation.angle[eid])
 
         ctx.strokeStyle = 'white'
+
+        // Radius
+        ctx.beginPath()
+        ctx.moveTo(r, 0)
+        ctx.lineTo(0, 0)
+        ctx.stroke()
+
+        // Circle
         ctx.beginPath()
         ctx.ellipse(0, 0, r, r, Math.PI / 4, 0, 2 * Math.PI)
         ctx.stroke()
