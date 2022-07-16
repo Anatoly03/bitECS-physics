@@ -1,5 +1,8 @@
 import { addComponent, addEntity, IWorld } from 'bitecs'
 import { Pos, Vertex } from './comps'
+import { add, cross, div, mult } from './vec'
+
+type Vertices = { x: number, y: number }[]
 
 /**
  * @returns entity id
@@ -22,7 +25,7 @@ function addVertex(world: IWorld, x: number, y: number, next: number): number {
  * @description creates a linked list of entities (vertices) from a point array
  * @returns entity id of the first vertex
  */
-export function createVertices(world: IWorld, points: { x: number, y: number }[]): number {
+export function createVertices(world: IWorld, points: Vertices): number {
     let first
     let current
 
@@ -44,7 +47,7 @@ export function createVertices(world: IWorld, points: { x: number, y: number }[]
  */
 export function fromPath(world: IWorld, path: string): number {
     var pathPattern = /L?\s*([-\d.e]+)[\s,]*([-\d.e]+)*/ig,
-        points: { x: number, y: number }[] = [];
+        points: Vertices = [];
 
     path.replace(pathPattern, (_, x, y) => {
         points.push({ x: parseFloat(x), y: parseFloat(y) })
@@ -52,6 +55,56 @@ export function fromPath(world: IWorld, path: string): number {
     });
 
     return createVertices(world, points);
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 89
+ * @description Returns the centroid of a body
+ * @param {number} eid Entity id of a vertex
+ * @returns entity id of the first vertex
+ */
+export function centre(vertices: Vertices) {
+    let _area = area(vertices, true),
+        centre = { x: 0, y: 0 },
+        _cross,
+        temp,
+        j;
+
+    for (var i = 0; i < vertices.length; i++) {
+        j = (i + 1) % vertices.length;
+        _cross = cross(vertices[i], vertices[j]);
+        temp = mult(add(vertices[i], vertices[j]), _cross);
+        centre = add(centre, temp);
+    }
+
+    return div(centre, 6 * _area);
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 112
+ * @description Returns the centroid of a body
+ */
+export function mean() {
+    // TODO
+}
+
+/**
+ * @rewrite Matter.js/geometry/Vertices.js, line 130
+ * @description area of body
+ */
+export function area(vertices : Vertices, signed : boolean) : number {
+    var area = 0,
+        j = vertices.length - 1;
+
+    for (var i = 0; i < vertices.length; i++) {
+        area += (vertices[j].x - vertices[i].x) * (vertices[j].y + vertices[i].y);
+        j = i;
+    }
+
+    if (signed)
+        return area / 2;
+
+    return Math.abs(area) / 2;
 }
 
 /**

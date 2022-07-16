@@ -80,13 +80,13 @@ var Common = require('../core/Common');
         return Vertices.create(points, body);
     };*/
 
-    /**
+    /*
      * Returns the centre (centroid) of the set of vertices.
      * @method centre
      * @param {vertices} vertices
      * @return {vector} The centre point
      */
-    Vertices.centre = function(vertices) {
+    /*Vertices.centre = function(vertices) {
         var area = Vertices.area(vertices, true),
             centre = { x: 0, y: 0 },
             cross,
@@ -101,7 +101,7 @@ var Common = require('../core/Common');
         }
 
         return Vector.div(centre, 6 * area);
-    };
+    };*/
 
     /**
      * Returns the average (mean) of the set of vertices.
@@ -120,14 +120,14 @@ var Common = require('../core/Common');
         return Vector.div(average, vertices.length);
     };
 
-    /**
+    /*
      * Returns the area of the set of vertices.
      * @method area
      * @param {vertices} vertices
      * @param {bool} signed
      * @return {number} The area
      */
-    Vertices.area = function(vertices, signed) {
+    /*Vertices.area = function(vertices, signed) {
         var area = 0,
             j = vertices.length - 1;
 
@@ -140,7 +140,7 @@ var Common = require('../core/Common');
             return area / 2;
 
         return Math.abs(area) / 2;
-    };
+    };*/
 
     /**
      * Returns the moment of inertia (second moment of area) of the set of vertices given the total mass.
