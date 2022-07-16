@@ -24,7 +24,7 @@ var Common = require('../core/Common');
 
 (function() {
 
-    /**
+    /*
      * Creates a new set of `Matter.Body` compatible vertices.
      * The `points` argument accepts an array of `Matter.Vector` points orientated around the origin `(0, 0)`, for example:
      *
@@ -41,7 +41,7 @@ var Common = require('../core/Common');
      * @param {vector[]} points
      * @param {body} body
      */
-    Vertices.create = function(points, body) {
+    /*Vertices.create = function(points, body) {
         var vertices = [];
 
         for (var i = 0; i < points.length; i++) {
@@ -58,9 +58,9 @@ var Common = require('../core/Common');
         }
 
         return vertices;
-    };
+    };*/
 
-    /**
+    /*
      * Parses a string containing ordered x y pairs separated by spaces (and optionally commas), 
      * into a `Matter.Vertices` object for the given `Matter.Body`.
      * For parsing SVG paths, see `Svg.pathToVertices`.
@@ -69,8 +69,8 @@ var Common = require('../core/Common');
      * @param {body} body
      * @return {vertices} vertices
      */
-    Vertices.fromPath = function(path, body) {
-        var pathPattern = /L?\s*([-\d.e]+)[\s,]*([-\d.e]+)*/ig,
+    /*Vertices.fromPath = function(path, body) {
+        var pathPattern = /L?\s*([-\d.e]+)[\s,]*([-\d.e]+)* /ig,
             points = [];
 
         path.replace(pathPattern, function(match, x, y) {
@@ -78,7 +78,7 @@ var Common = require('../core/Common');
         });
 
         return Vertices.create(points, body);
-    };
+    };*/
 
     /**
      * Returns the centre (centroid) of the set of vertices.
