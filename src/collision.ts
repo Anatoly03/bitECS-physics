@@ -2,6 +2,9 @@ import { addComponent, addEntity, defineQuery, IWorld, pipe } from 'bitecs'
 import { Body, Pos, Vel, Collision } from './comps'
 import { toArray } from './vertices'
 
+let intersect: (a: { x: number, y: number }[], b: { x: number, y: number }[]) => { x: number, y: number }[]
+(async () => intersect = await import('polygons-intersect'))()
+
 const moving_bodies_query = defineQuery([Body, Pos, Vel])
 const body_query = defineQuery([Body, Pos])
 
@@ -19,7 +22,11 @@ export function detectCollision(world: IWorld) {
 
         for (let j = 0; j < bodies.length; j++) {
             let bodyB = bodies[i]
-            if (bodyA >= bodyB) continue
+
+            let verticesA = toArray(world, Body.vertices[bodyA]).map(({ x, y }) => ({ x: x + Pos.x[bodyA], y: y + Pos.y[bodyA] }))
+            let verticesB = toArray(world, Body.vertices[bodyB]).map(({ x, y }) => ({ x: x + Pos.x[bodyB], y: y + Pos.y[bodyB] }))
+
+            if (intersect(verticesA, verticesB).length == 0) continue
 
             // bodyA <<< bodyB
             // detect collision here

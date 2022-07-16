@@ -2,7 +2,8 @@ import { addComponent, addEntity, IWorld } from 'bitecs'
 import { Pos, Vertex } from './comps'
 import { add, cross, div, mult } from './math/vec'
 
-type Vertices = { x: number, y: number }[]
+type Vertex = { x: number, y: number }
+type Vertices = Vertex[]
 
 /**
  * @returns entity id
@@ -191,12 +192,15 @@ export function hull() {
  * @description Converts a linked list of entities (vertices) to an array
  * @returns array of vertex id's
  */
-export function toArray(world: IWorld, vertex: number): number[] {
-    let vertices: number[] = []
+export function toArray(world: IWorld, vertex: number): Vertex[] {
+    let vertices: Vertex[] = []
     let first_vertex = vertex
 
     while (true) {
-        vertices.push(vertex)
+        vertices.push({
+            x: Pos.x[vertex],
+            y: Pos.y[vertex]
+        })
         vertex = Vertex.next[vertex]
         if (vertex === first_vertex) break
     }
