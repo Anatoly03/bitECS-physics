@@ -1,4 +1,4 @@
-import { createEngine, Components, createRender } from './src/index'
+import { createEngine, Components, createRender, addRectangle, addPolygon } from './src/index'
 import { createWorld, addEntity, addComponent, defineQuery } from 'bitecs'
 
 let canvas = <HTMLCanvasElement>document.getElementById('canvas')
@@ -21,6 +21,8 @@ function init() {
 }
 
 function createBodies() {
+    const _floor = addRectangle(world, canvas.width * .5, 400, canvas.width - 200, 50)
+
     const floor = addEntity(world)
     addComponent(world, Components.Body, floor)
     addComponent(world, Components.Pos, floor)

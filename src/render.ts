@@ -1,5 +1,6 @@
 import { defineQuery, IWorld, pipe } from 'bitecs'
-import { Acc, Pos, Vel, Rotation, Rectangle, Circle } from './comps'
+import { updateYield } from 'typescript'
+import { Acc, Pos, Vel, Rotation, Rectangle, Circle, Vertex, Body } from './comps'
 
 let lastCalledTime = Date.now()
 let fps = 0
@@ -94,6 +95,42 @@ function render_centers(world: IWorld) {
 }
 
 /**
+ * Render Center Dots of Entities
+ */
+
+const body_query = defineQuery([Pos, Body])
+function render_bodies(world: IWorld) {
+    const bodies = body_query(world)
+
+    ctx.strokeStyle = 'white'
+    for (let i = 0; i < bodies.length; i++) {
+        const eid = bodies[i]
+        let vertex = Body.vertices[eid],
+            first_vertex = vertex
+        let x = Pos.x[eid],
+            y = Pos.y[eid]
+
+        ctx.translate(x, y)
+        ctx.beginPath()
+
+        while (true) {
+            ctx.lineTo(Pos.x[vertex], Pos.y[vertex])
+
+            vertex = Vertex.next[vertex]
+            if (vertex === first_vertex) {
+                ctx.lineTo(Pos.x[vertex], Pos.y[vertex])
+                break
+            }
+        }
+
+        ctx.stroke()
+        ctx.translate(-x, -y)
+    }
+
+    return world
+}
+
+/**
  * FPS / PIPE
  */
 
@@ -114,6 +151,7 @@ const render__pipe = pipe(
     render_rectangles,
     render_circles,
     render_centers,
+    render_bodies,
 )
 
 function set_background(color: string) {

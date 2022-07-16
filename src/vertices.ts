@@ -23,14 +23,18 @@ function addVertex(world: IWorld, x: number, y: number, next: number): number {
  * @returns entity id of the first vertex
  */
 export function createVertices(world: IWorld, points: { x: number, y: number }[]): number {
-    let next = -1 // We start from end, no vertices follow the last vertex
+    let first
+    let current
 
-    for (var i = points.length - 1; i > 0; i--) {
+    for (var i = 0; i < points.length; i++) {
         let point = points[i]
-        next = addVertex(world, point.x, point.y, next)
+        current = addVertex(world, point.x, point.y, current)
+        if (i == 0) first = current
     }
 
-    return next // This is the first vertex
+    Vertex.next[first] = current
+
+    return first
 }
 
 /**
