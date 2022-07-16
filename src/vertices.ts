@@ -22,7 +22,7 @@ function addVertex(world: IWorld, x: number, y: number, next: number): number {
  * @description creates a linked list of entities (vertices) from a point array
  * @returns entity id of the first vertex
  */
-function createVertices(world: IWorld, points: { x: number, y: number }[]): number {
+export function createVertices(world: IWorld, points: { x: number, y: number }[]): number {
     let next = -1 // We start from end, no vertices follow the last vertex
 
     for (var i = points.length - 1; i > 0; i--) {
@@ -38,7 +38,7 @@ function createVertices(world: IWorld, points: { x: number, y: number }[]): numb
  * @description creates a linked list of entities (vertices) from a point array
  * @returns entity id of the first vertex
  */
-function fromPath(world: IWorld, path: string): number {
+export function fromPath(world: IWorld, path: string): number {
     var pathPattern = /L?\s*([-\d.e]+)[\s,]*([-\d.e]+)*/ig,
         points: { x: number, y: number }[] = [];
 

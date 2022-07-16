@@ -21,7 +21,7 @@ var Vector = require('../geometry/Vector');
 
 (function() {
 
-    /**
+    /*
      * Creates a new rigid body model with a rectangle hull. 
      * The options parameter is an object that specifies any properties you wish to override the defaults.
      * See the properties section of the `Matter.Body` module for detailed information on what you can pass via the `options` object.
@@ -33,7 +33,7 @@ var Vector = require('../geometry/Vector');
      * @param {object} [options]
      * @return {body} A new rectangle body
      */
-    Bodies.rectangle = function(x, y, width, height, options) {
+    /*Bodies.rectangle = function(x, y, width, height, options) {
         options = options || {};
 
         var rectangle = { 
@@ -50,7 +50,7 @@ var Vector = require('../geometry/Vector');
         }
 
         return Body.create(Common.extend({}, rectangle, options));
-    };
+    };*/
     
     /**
      * Creates a new rigid body model with a trapezoid hull. 
@@ -98,7 +98,7 @@ var Vector = require('../geometry/Vector');
         return Body.create(Common.extend({}, trapezoid, options));
     };
 
-    /**
+    /*
      * Creates a new rigid body model with a circle hull. 
      * The options parameter is an object that specifies any properties you wish to override the defaults.
      * See the properties section of the `Matter.Body` module for detailed information on what you can pass via the `options` object.
@@ -110,7 +110,7 @@ var Vector = require('../geometry/Vector');
      * @param {number} [maxSides]
      * @return {body} A new circle body
      */
-    Bodies.circle = function(x, y, radius, options, maxSides) {
+    /*Bodies.circle = function(x, y, radius, options, maxSides) {
         options = options || {};
 
         var circle = {
@@ -127,9 +127,9 @@ var Vector = require('../geometry/Vector');
             sides += 1;
 
         return Bodies.polygon(x, y, sides, radius, Common.extend({}, circle, options));
-    };
+    };*/
 
-    /**
+    /*
      * Creates a new rigid body model with a regular polygon hull with the given number of sides. 
      * The options parameter is an object that specifies any properties you wish to override the defaults.
      * See the properties section of the `Matter.Body` module for detailed information on what you can pass via the `options` object.
@@ -141,7 +141,7 @@ var Vector = require('../geometry/Vector');
      * @param {object} [options]
      * @return {body} A new regular polygon body
      */
-    Bodies.polygon = function(x, y, sides, radius, options) {
+    /*Bodies.polygon = function(x, y, sides, radius, options) {
         options = options || {};
 
         if (sides < 3)
@@ -173,7 +173,7 @@ var Vector = require('../geometry/Vector');
         }
 
         return Body.create(Common.extend({}, polygon, options));
-    };
+    };*/
 
     /**
      * Utility to create a compound body based on set(s) of vertices.
