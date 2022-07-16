@@ -47,3 +47,8 @@ A component declaring an objects acceleration. To change speed, objects also req
 - angle `f64` - _rotation of the body along its' center_
 
 A component declaring an objects rotation. Objects will rotate along their center point.
+
+# In Work
+
+src - project source
+src_matter_js - <a href="https://github.com/liabru/matter-js/">matter-js</a> source, analysed for rewrite
