@@ -23,7 +23,7 @@ function init() {
 function createBodies() {
     const floor = addRectangle(world, 100, 400, canvas.width - 200, 50)
     const ball = addCircle(world, 300, 200, 50)
-    const ball2 = addCircle(world, 300, 200, 50)
+    const ball2 = addPolygon(world, 300, 200, 50, 7)
     
     addComponent(world, Components.Vel, ball)
     addComponent(world, Components.Acc, ball)

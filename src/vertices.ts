@@ -53,3 +53,20 @@ export function fromPath(world: IWorld, path: string): number {
 
     return createVertices(world, points);
 }
+
+/**
+ * @description Converts a linked list of entities (vertices) to an array
+ * @returns array of vertex id's
+ */
+export function toArray(world: IWorld, vertex: number): number[] {
+    let vertices: number[] = []
+    let first_vertex = vertex
+
+    while (true) {
+        vertices.push(vertex)
+        vertex = Vertex.next[vertex]
+        if (vertex === first_vertex) break
+    }
+
+    return vertices
+}
