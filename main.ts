@@ -51,7 +51,7 @@ function createBodies() {
     addComponent(world, Components.Acc, ball2)
 
     Components.Pos.x[ball2] = canvas.width * .5 + 300
-    Components.Pos.y[ball2] = 300
+    Components.Pos.y[ball2] = 350
     Components.Circle.r[ball2] = 50
     Components.Acc.x[ball2] = -0.005
 }
