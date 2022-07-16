@@ -1,5 +1,9 @@
 <h1 align="center">bitECS-physics</h1>
-<center>Lorem Ipsum</center>
+<h3 align="center">
+<a href="https://github.com/liabru/matter-js/">Matter.JS</a> rewritten physics engine for 
+<a href="https://github.com/NateTheGreatt/bitECS/">bitECS</a></h3>
+
+(This project is still in work)
 
 ```
 npm i N/A
