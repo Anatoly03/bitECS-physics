@@ -31,7 +31,15 @@ export const Rotation = defineComponent({
 //
 //
 
-export const Body = defineComponent()
+export const Edge = defineComponent({
+    x: Types.f64,
+    y: Types.f64,
+    next: Types.i32, // next edge
+})
+
+export const Body = defineComponent({
+    edge: Types.i32, // first edge
+})
 
 export const Rectangle = defineComponent({
     w: Types.f64,
