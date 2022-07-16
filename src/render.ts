@@ -1,5 +1,4 @@
 import { defineQuery, IWorld, pipe } from 'bitecs'
-import { updateYield } from 'typescript'
 import { Acc, Pos, Vel, Rotation, Vertex, Body } from './comps'
 
 let lastCalledTime = Date.now()

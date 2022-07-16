@@ -1,6 +1,6 @@
 import { addComponent, addEntity, IWorld } from 'bitecs'
 import { Pos, Vertex } from './comps'
-import { add, cross, div, mult } from './vec'
+import { add, cross, div, mult } from './math/vec'
 
 type Vertices = { x: number, y: number }[]
 

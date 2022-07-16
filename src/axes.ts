@@ -1,4 +1,4 @@
-import { normalise } from './vec'
+import { normalise } from './math/vec'
 
 /**
  * @rewrite Matter.js/geometry/Axes.js, line 22
