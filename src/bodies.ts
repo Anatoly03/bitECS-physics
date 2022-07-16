@@ -1,6 +1,6 @@
 import { addEntity, IWorld } from 'bitecs'
 
-export function createRectangle(world: IWorld): number {
+export function addRectangle(world: IWorld): number {
     const eid = addEntity(world)
 
     // rectangle x, y, w, h
@@ -8,15 +8,15 @@ export function createRectangle(world: IWorld): number {
     return eid
 }
 
-export function createCircle(world: IWorld): number {
+export function addCircle(world: IWorld): number {
     // detailed polygonal representation of a circle
     // x, y, r
     // createPolygon(..., x, y, r, CONST n)
 
-    return createPolygon(world)
+    return addPolygon(world)
 }
 
-export function createPolygon(world: IWorld): number {
+export function addPolygon(world: IWorld): number {
     const eid = addEntity(world)
 
     // polygon x, y, r, n
