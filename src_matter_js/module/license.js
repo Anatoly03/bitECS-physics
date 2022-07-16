@@ -1,3 +1,8 @@
+//
+// THE FOLLOWING IS THE LICENSE PROVIDED BY MATTER-JS NODE PACKAGE
+// https://github.com/liabru/matter-js
+//
+
 /**
  * The MIT License (MIT)
  * 

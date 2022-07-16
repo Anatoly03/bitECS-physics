@@ -1,17 +1,4 @@
 
-`
-
-COMPOSITE = 
-
-`
-
-
-
-
-
-
-
-
 /**
 * A composite is a collection of `Matter.Body`, `Matter.Constraint` and other `Matter.Composite` objects.
 *
