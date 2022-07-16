@@ -26,18 +26,15 @@ function createBodies() {
     const ball2 = addPolygon(world, 300, 200, 50, 7)
     
     addComponent(world, Components.Vel, ball)
-    addComponent(world, Components.Acc, ball)
+    addComponent(world, Components.Vel, ball2)
 
     Components.Pos.x[ball] = canvas.width * .5 - 300
     Components.Pos.y[ball] = 300
-    Components.Acc.x[ball] = 0.005
-
-    addComponent(world, Components.Vel, ball2)
-    addComponent(world, Components.Acc, ball2)
+    Components.Vel.x[ball] = 0.5
 
     Components.Pos.x[ball2] = canvas.width * .5 + 300
     Components.Pos.y[ball2] = 250
-    Components.Acc.x[ball2] = -0.005
+    Components.Vel.x[ball2] = -0.5
 }
 
 window.onload = () => {
