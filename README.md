@@ -1,4 +1,5 @@
 <h1 align="center">bitECS-physics</h1>
+<center>Lorem Ipsum</center>
 
 ```
 npm i N/A
