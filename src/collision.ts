@@ -25,8 +25,10 @@ export function detectCollision(world: IWorld) {
 
             let verticesA = toArray(world, Body.vertices[bodyA]).map(({ x, y }) => ({ x: x + Pos.x[bodyA], y: y + Pos.y[bodyA] }))
             let verticesB = toArray(world, Body.vertices[bodyB]).map(({ x, y }) => ({ x: x + Pos.x[bodyB], y: y + Pos.y[bodyB] }))
+            let intersections = intersect(verticesA, verticesB)
 
-            if (intersect(verticesA, verticesB).length == 0) continue
+            if (intersections.length == 0) continue
+            console.log(intersections)
 
             // bodyA <<< bodyB
             // detect collision here
