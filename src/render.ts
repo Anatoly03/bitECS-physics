@@ -1,5 +1,5 @@
 import { defineQuery, IWorld, pipe } from 'bitecs'
-import { Acc, Pos, Vel, Rotation, Vertex, Body } from './comps'
+import { Acc, Pos, Vel, Rotation, Vertex, Body, RelPos } from './comps'
 import { centre, toArray } from './vertices'
 
 let lastCalledTime = Date.now()
@@ -28,11 +28,11 @@ function render_bodies(world: IWorld) {
         ctx.beginPath()
 
         while (true) {
-            ctx.lineTo(Pos.x[vertex], Pos.y[vertex])
+            ctx.lineTo(RelPos.x[vertex], RelPos.y[vertex])
 
             vertex = Vertex.next[vertex]
             if (vertex === first_vertex) {
-                ctx.lineTo(Pos.x[vertex], Pos.y[vertex])
+                ctx.lineTo(RelPos.x[vertex], RelPos.y[vertex])
                 break
             }
         }

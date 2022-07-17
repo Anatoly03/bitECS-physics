@@ -1,5 +1,5 @@
 import { addComponent, addEntity, IWorld } from 'bitecs'
-import { Pos, Vertex } from './comps'
+import { RelPos, Vertex } from './comps'
 import { add, cross, div, mult } from './math/vec'
 
 type Vertex = { x: number, y: number }
@@ -12,10 +12,10 @@ function addVertex(world: IWorld, x: number, y: number, next: number): number {
     const eid = addEntity(world)
 
     addComponent(world, Vertex, eid)
-    addComponent(world, Pos, eid)
+    addComponent(world, RelPos, eid)
 
-    Pos.x[eid] = x
-    Pos.y[eid] = y
+    RelPos.x[eid] = x
+    RelPos.y[eid] = y
     Vertex.next[eid] = next
 
     return eid
@@ -198,8 +198,8 @@ export function toArray(world: IWorld, vertex: number): Vertex[] {
 
     while (true) {
         vertices.push({
-            x: Pos.x[vertex],
-            y: Pos.y[vertex]
+            x: RelPos.x[vertex],
+            y: RelPos.y[vertex]
         })
         vertex = Vertex.next[vertex]
         if (vertex === first_vertex) break
