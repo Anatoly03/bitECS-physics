@@ -2,6 +2,8 @@ import { addComponent, addEntity, defineQuery, IWorld, pipe } from 'bitecs'
 import { Body, Pos, Vel, Collision } from './comps'
 import { toArray } from './vertices'
 
+let collisionPairs: { [keys: string]: { x: number, y: number }[] } = {}
+
 let intersect: (a: { x: number, y: number }[], b: { x: number, y: number }[]) => { x: number, y: number }[]
 (async () => intersect = await import('polygons-intersect'))()
 
@@ -27,15 +29,20 @@ export function detectCollision(world: IWorld) {
             let verticesB = toArray(world, Body.vertices[bodyB]).map(({ x, y }) => ({ x: x + Pos.x[bodyB], y: y + Pos.y[bodyB] }))
             let intersections = intersect(verticesA, verticesB)
 
-            if (intersections.length == 0) continue
-            console.log(intersections)
+            if (intersections.length == 0) {
+                /*let previousCollision = collisionPairs[collisionPairKey(bodyA, bodyB)]
+                if (collisionPairs[collisionPairKey(bodyA, bodyB)]) {
 
-            // bodyA <<< bodyB
-            // detect collision here
+                }*/
+                delete collisionPairs[collisionPairKey(bodyA, bodyB)]
+                continue
+            }
 
-            console.log('contact', bodyA, bodyB)
+            collisionPairs[collisionPairKey(bodyA, bodyB)] = intersections
         }
     }
+
+    console.log(Object.keys(collisionPairs).length)
 
     return world
 }
@@ -118,4 +125,11 @@ export function bodiesOverlap(world: IWorld, bodyA: number, bodyB: number) {
 
     result.axis = axes[overlapAxisNumber];
     result.overlap = overlapMin;*/
+}
+
+/**
+ * @description Get and set the collision pairs
+ */
+function collisionPairKey(bodyA: number, bodyB: number) {
+    return (bodyA < bodyB) ? `${bodyA},${bodyB}` : `${bodyB},${bodyA}`
 }
