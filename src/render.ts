@@ -1,16 +1,18 @@
 import { defineQuery, IWorld, pipe } from 'bitecs'
 import { Acc, Pos, Vel, Rotation, Vertex, Body } from './comps'
+import { centre, toArray } from './vertices'
 
 let lastCalledTime = Date.now()
 let fps = 0
 let canvas: HTMLCanvasElement
 let ctx: CanvasRenderingContext2D
 
+const body_query = defineQuery([Pos, Body])
+
 /**
- * Render Center Dots of Entities
+ * Render Bodies and their vertices
  */
 
-const body_query = defineQuery([Pos, Body])
 function render_bodies(world: IWorld) {
     const bodies = body_query(world)
 
@@ -43,6 +45,34 @@ function render_bodies(world: IWorld) {
 }
 
 /**
+ * Render Body Centres
+ */
+
+function render_body_centre(world: IWorld) {
+    const bodies = body_query(world)
+
+    ctx.fillStyle = 'red'
+    for (let i = 0; i < bodies.length; i++) {
+        const eid = bodies[i]
+        let _centre = centre(toArray(world, Body.vertices[eid]))
+
+        let x = Pos.x[eid] + _centre.x,
+            y = Pos.y[eid] + _centre.y
+
+        // BUG!
+        // RECTANGLE FLOOR ISN'T VISIBLE HERE
+        //
+        // console.log(x, y)
+
+        ctx.translate(x, y)
+        ctx.fillRect(-1, -1, 2, 2)
+        ctx.translate(-x, -y)
+    }
+
+    return world
+}
+
+/**
  * FPS / PIPE
  */
 
@@ -61,6 +91,7 @@ function display_fps() {
 
 const render__pipe = pipe(
     render_bodies,
+    render_body_centre,
 )
 
 function set_background(color: string) {
