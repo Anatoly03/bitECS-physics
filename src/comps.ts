@@ -11,6 +11,11 @@ export const Pos = defineComponent({
     y: Types.f64
 })
 
+export const RelPos = defineComponent({
+    x: Types.f64,
+    y: Types.f64
+})
+
 export const Vel = defineComponent({
     x: Types.f64,
     y: Types.f64
